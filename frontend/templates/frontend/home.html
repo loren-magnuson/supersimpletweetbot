@@ -3,7 +3,7 @@
 {% block content %}
 
 <div class="container" style="text-align: center; padding-top: 10%;">
-  <h1>Django Social Login</h1>
+  <h1>SuperSimpleTweetBot</h1>
 
   <br /><br />
 
@@ -11,6 +11,17 @@
     <h3>Welcome {{ user.username }} !!!</h3>
     <br /><br />
     <a href="{% url 'account_logout' %}" class="btn btn-danger">Logout</a>
+  {% else %}
+
+    ...
+
+    <!-- Twitter button starts here -->
+      </a>
+      <a id="twitter_login_link" href="{% provider_login_url 'twitter' %}" class="btn btn-primary">
+        <i class="fa fa-twitter fa-fw"></i>
+        <span>Login with Twitter</span>
+      </a>
+    <!-- Twitter button ends here -->
   {% endif %}
 </div>
 
