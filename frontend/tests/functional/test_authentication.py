@@ -16,7 +16,7 @@ class NewVisitorTest(unittest.TestCase):
 
         self.assertIn('SuperSimpleTweetBot - Login', self.browser.title)
 
-        self.fail('Finish the test!')
+
 
 
 if __name__ == '__main__':
