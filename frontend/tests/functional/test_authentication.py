@@ -19,8 +19,6 @@ class NewVisitorTest(unittest.TestCase):
 
         self.assertIsNotNone(self.browser.find_element(By.ID, "twitter_login_link"))
 
-        self.assertIn('SuperSimpleTweetBot - Login', self.browser.title)
-
     def test_new_user_can_navigate_to_twitter_login_confirmation(self):
         # Bonnie decides to click login and arrives at a confirmation page,
         # explaining they'll be logging to our app via twitter next
