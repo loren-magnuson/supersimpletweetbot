@@ -1,0 +1,23 @@
+{% extends 'frontend/base.html' %} {% load socialaccount %}
+        
+{% block content %}
+
+<div class="container" style="text-align: center; padding-top: 10%;">
+  <h1>SuperSimpleTweetBot</h1>
+
+  <br /><br />
+  {% if user.is_authenticated %}
+    <h3>Welcome {{ user.username }} !!!</h3>
+    <br /><br />
+    <a href="{% url 'account_logout' %}" class="btn btn-danger">Logout</a>
+  {% else %}
+      {% include "frontend/login/twitter.html" %}
+  {% endif %}
+</div>
+
+{% endblock content %}</title>
+</head>
+<body>
+
+</body>
+</html>

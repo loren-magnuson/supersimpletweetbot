@@ -1,9 +1,10 @@
+from django.contrib.auth.models import User
+from django.test import TestCase, Client
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-import unittest
 
 
-class NewVisitorTest(unittest.TestCase):
+class NewVisitorTest(TestCase):
 
     def setUp(self):
         self.browser = webdriver.Chrome()
@@ -31,11 +32,20 @@ class NewVisitorTest(unittest.TestCase):
 
         self.assertTrue(self.browser.current_url.endswith('/accounts/twitter/login/'))
 
-    def test_new_user_is_redirected_after_twitter_login(self):
+    def test_authenticated_user_is_sent_to_homepage(self):
+        credentials = {
+            'username': 'test',
+            'password': 'test'
+        }
 
-        self.fail('to do next')
+        user = User.objects.create(username=credentials['username'])
+        user.set_password(credentials['password'])
+        user.save()
 
+        c = Client()
+        c.login(username=credentials['username'], password=credentials['password'])
 
-if __name__ == '__main__':
-    unittest.main()
+        response = c.get('http://127.0.0.1:8000')
+        response.render()
 
+        self.assertIn('SuperSimpleTweetBot - Home', str(response.content))

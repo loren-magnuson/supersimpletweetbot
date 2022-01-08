@@ -17,7 +17,7 @@ TEMPLATE_DEBUG = DEBUG
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'xxx',
+        'NAME': 'supersimpletweetbot',
         'USER': 'ubuntu',
         "PASSWORD": "",
         "HOST": "",

@@ -10,11 +10,24 @@
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
     />
+    <link type="text/css" href="frontend/static/css/navigation.css"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SuperSimpleTweetBot - Login</title>
+    {% block title %}
+      {% if user.is_authenticated %}
+        <title>SuperSimpleTweetBot - Home</title>
+      {% else %}
+        <title>SuperSimpleTweetBot - Login</title>
+      {% endif %}
+    {% endblock %}
   </head>
   <body>
-    {% block content %}
-    {% endblock content %}
+    {% if user.is_authenticated %}
+      {% include "frontend/navigation.html" %}
+    {% endif %}
+    <div class="container-fluid">
+      {% block content %}
+      {% endblock content %}
+    </div>
   </body>
 </html>
